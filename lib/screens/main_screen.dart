@@ -39,7 +39,8 @@ class _MainScreenState extends State<MainScreen> {
           home: Scaffold(
             body: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding:
+                    const EdgeInsets.only(left: 16.0, top: 16.0, right: 16.0),
                 child: Column(
                   children: [
                     // text, how many vised and date
@@ -119,11 +120,36 @@ class _MainScreenState extends State<MainScreen> {
                                       ],
                                     ),
                                     // store type icons
-                                    IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(
-                                          Icons.shopping_cart_outlined),
-                                      iconSize: 20.0,
+                                    Container(
+                                      width: 40,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: products[index % products.length]
+                                                    .storeType ==
+                                                'buy'
+                                            ? bilobaFlower
+                                            : mossGreen,
+                                      ),
+                                      child: Center(
+                                        child: IconButton(
+                                          onPressed: () {},
+                                          icon:
+                                              products[index % products.length]
+                                                          .storeType ==
+                                                      'buy'
+                                                  ? Icon(
+                                                      Icons
+                                                          .shopping_cart_outlined,
+                                                      color: lavender,
+                                                    )
+                                                  : Icon(
+                                                      Icons.card_travel,
+                                                      color: deYork,
+                                                    ),
+                                          iconSize: 20.0,
+                                        ),
+                                      ),
                                     )
                                   ],
                                 ),
@@ -163,7 +189,7 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             bottomNavigationBar: BottomNavigationBar(
-              elevation: 0.0,
+              // elevation: 1.0,
               unselectedItemColor: black,
               selectedItemColor: dodgerBlue,
               items: const <BottomNavigationBarItem>[
