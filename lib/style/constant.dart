@@ -6,6 +6,8 @@ import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 Color black = const Color.fromARGB(255, 18, 18, 18);
 // text grey color
 Color grey = const Color.fromARGB(255, 100, 100, 100);
+// background grey
+Color greyBackground = const Color.fromARGB(255, 227, 227, 230);
 // product name color
 Color shark = const Color.fromARGB(255, 48, 50, 55);
 // background color
