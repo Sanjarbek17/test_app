@@ -6,9 +6,11 @@ import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:test_app/style/main_style.dart';
 
 import '../models/main_model.dart';
 import '../providers/main_screen_provider.dart';
+import '../style/constant.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -32,77 +34,154 @@ class _MainScreenState extends State<MainScreen> {
             DateFormat("Сегодня, dd MMMM", "ru_RU").format(now);
 
         return MaterialApp(
+          theme: theme,
           debugShowCheckedModeBanner: false,
           home: Scaffold(
-              body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Column(
-                children: [
-                  // text, how many vised and date
-                  Row(
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // visted client count
-                          Text(
-                            '${products.length} визитов',
-                            style: Theme.of(context).textTheme.titleLarge,
-                          ),
-                          const SizedBox(height: 4),
-                          // todays date
-                          Text(formattedDate,
-                              style: Theme.of(context).textTheme.titleSmall),
-                        ],
-                      )
-                    ],
-                  ),
-                  // navbar, switcher and icons
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.calendar_today),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.segment),
-                      )
-                    ],
-                  ),
-                  Expanded(child: ListView.builder(
-                    itemBuilder: (context, index) {
-                      return Container(
-                        child: Column(
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  children: [
+                    // text, how many vised and date
+                    Row(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
+                            // visted client count
+                            Text(
+                              '${products.length} визитов',
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                            const SizedBox(height: 4),
+                            // todays date
+                            Text(formattedDate,
+                                style: Theme.of(context).textTheme.titleSmall),
+                          ],
+                        )
+                      ],
+                    ),
+                    // navbar, switcher and icons
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.calendar_today, color: dodgerBlue),
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(Icons.segment, color: dodgerBlue),
+                          )
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(16),
+                              color: Colors.white,
+                            ),
+                            padding: const EdgeInsets.all(16),
+                            margin: const EdgeInsets.symmetric(vertical: 8),
+                            height: MediaQuery.of(context).size.height * 0.15,
+                            child: Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
+                                // product name and address
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Text(
-                                        products[index % products.length].name),
-                                    Text(products[index % products.length]
-                                        .address),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          products[index % products.length]
+                                              .name,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge,
+                                        ),
+                                        const SizedBox(height: 4),
+                                        Text(
+                                          products[index % products.length]
+                                              .address,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodySmall,
+                                        ),
+                                      ],
+                                    ),
+                                    // store type icons
+                                    IconButton(
+                                      onPressed: () {},
+                                      icon: const Icon(
+                                          Icons.shopping_cart_outlined),
+                                      iconSize: 20.0,
+                                    )
                                   ],
                                 ),
-                                IconButton(
-                                    onPressed: () {},
-                                    icon: const Icon(
-                                        Icons.shopping_cart_outlined))
+                                // product time and distance
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(children: [
+                                      Text(
+                                          '🕔 ${products[index % products.length].time.toString()} мин',
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleMedium),
+                                      const SizedBox(width: 30),
+                                      Text(
+                                        '🌴 ${products[index % products.length].distance.toString()} км',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleMedium,
+                                      ),
+                                    ]),
+                                    Text(products[index % products.length].code,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .bodySmall)
+                                  ],
+                                )
                               ],
-                            )
-                          ],
-                        ),
-                      );
-                    },
-                  ))
-                ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
-          )),
+            bottomNavigationBar: BottomNavigationBar(
+              elevation: 0.0,
+              unselectedItemColor: black,
+              selectedItemColor: dodgerBlue,
+              items: const <BottomNavigationBarItem>[
+                BottomNavigationBarItem(
+                    icon: Icon(
+                      Icons.timeline_outlined,
+                    ),
+                    label: 'Визиты'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.settings_input_svideo), label: 'Команда'),
+                BottomNavigationBarItem(
+                    icon: Icon(Icons.account_circle_outlined),
+                    label: 'Профиль'),
+              ],
+              currentIndex: 0,
+              onTap: (index) {},
+            ),
+          ),
         );
       },
     );

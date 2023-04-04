@@ -24,6 +24,8 @@ Color lavender = const Color.fromARGB(255, 220, 116, 236);
 Color mossGreen = const Color.fromARGB(255, 180, 220, 172);
 // work type icon border color
 Color deYork = const Color.fromARGB(255, 124, 188, 116);
+// button color
+Color dodgerBlue = const Color.fromARGB(255, 34, 85, 234);
 
 // switcher code
 // final List<FlutterToggleTab> toggleTabs = [

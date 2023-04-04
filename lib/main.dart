@@ -5,8 +5,7 @@ import './screens/main_screen.dart';
 import './providers/main_screen_provider.dart';
 
 void main() {
-  // use existing provider
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

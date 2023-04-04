@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'constant.dart';
 
 ThemeData theme = ThemeData(
+  scaffoldBackgroundColor: concrete,
   colorScheme: ColorScheme.light(
-    primary: shark,
+    primary: osloGray,
     secondary: bilobaFlower,
     onSecondary: Colors.white,
   ),
@@ -17,14 +18,20 @@ ThemeData theme = ThemeData(
     ),
     titleMedium: TextStyle(
       fontFamily: 'Inter',
-      fontWeight: FontWeight.w400,
+      fontWeight: FontWeight.w500,
       fontSize: 14,
-      color: silverSand,
+      color: black,
     ),
     titleSmall: TextStyle(
       fontFamily: 'Inter',
       fontWeight: FontWeight.w400,
       fontSize: 12,
+      color: grey,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: 'Inter',
+      fontWeight: FontWeight.w400,
+      fontSize: 14,
       color: grey,
     ),
   ),
