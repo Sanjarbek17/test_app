@@ -17,11 +17,11 @@ Color osloGray = const Color.fromARGB(255, 147, 149, 149);
 // product address text color 2
 Color cornflowerBlue = const Color.fromARGB(255, 116, 148, 244);
 // buy type icon background color
-Color bilobaFlower = const Color.fromARGB(255, 228, 150, 238);
+Color bilobaFlower = const Color.fromARGB(255, 246, 220, 249);
 // buy type icon border color
-Color lavender = const Color.fromARGB(255, 220, 116, 236);
+Color lavender = const Color.fromARGB(255, 200, 108, 214);
 // work type icon background color
-Color mossGreen = const Color.fromARGB(255, 180, 220, 172);
+Color mossGreen = const Color.fromARGB(255, 215, 248, 208);
 // work type icon border color
 Color deYork = const Color.fromARGB(255, 124, 188, 116);
 // button color
