@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import '../screens/main_screen.dart';
+import 'package:provider/provider.dart';
+import '../style/main_style.dart';
+import './screens/main_screen.dart';
+import './providers/main_screen_provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  // use existing provider
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -11,8 +15,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: theme,
       routes: {
-        '/': (context) => const MainScreen(),
+        '/': (context) => MultiProvider(
+              providers: [
+                ChangeNotifierProvider(create: (_) => ProductProvider()),
+              ],
+              child: const MainScreen(),
+            ),
       },
     );
   }
