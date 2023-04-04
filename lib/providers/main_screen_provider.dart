@@ -66,6 +66,11 @@ class BottomNavigationBarProvider with ChangeNotifier {
     _currentIndex = index;
     notifyListeners();
   }
+
+  void changeIndex(int index) {
+    _currentIndex = index;
+    notifyListeners();
+  }
 }
 
 // switcher provider

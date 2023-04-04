@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
-
 // text color
 Color black = const Color.fromARGB(255, 18, 18, 18);
 // text grey color

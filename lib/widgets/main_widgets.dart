@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:provider/provider.dart';
@@ -28,6 +29,31 @@ class Switcher extends StatelessWidget {
         Provider.of<SwitcherProvider>(context, listen: false)
             .changeIndex(index);
       },
+    );
+  }
+}
+
+class IconButtons extends StatelessWidget {
+  final IconData icon;
+  final void Function()? onTap;
+
+  const IconButtons({
+    super.key,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(50),
+        color: Colors.white,
+      ),
+      child: IconButton(
+        onPressed: onTap,
+        icon: Icon(icon, color: dodgerBlue),
+      ),
     );
   }
 }

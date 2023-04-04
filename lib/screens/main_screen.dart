@@ -5,12 +5,12 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
-import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:test_app/style/main_style.dart';
 
 import '../models/main_model.dart';
 import '../providers/main_screen_provider.dart';
 import '../style/constant.dart';
+import '../widgets/main_widgets.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -68,14 +68,10 @@ class _MainScreenState extends State<MainScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.calendar_today, color: dodgerBlue),
-                          ),
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(Icons.segment, color: dodgerBlue),
-                          )
+                          IconButtons(icon: Icons.calendar_today, onTap: () {}),
+                          // Switcher
+                          const Switcher(),
+                          IconButtons(icon: Icons.segment, onTap: () {})
                         ],
                       ),
                     ),
@@ -204,8 +200,12 @@ class _MainScreenState extends State<MainScreen> {
                     icon: Icon(Icons.account_circle_outlined),
                     label: 'Профиль'),
               ],
-              currentIndex: 0,
-              onTap: (index) {},
+              currentIndex: Provider.of<BottomNavigationBarProvider>(context)
+                  .currentIndex,
+              onTap: (index) {
+                Provider.of<BottomNavigationBarProvider>(context, listen: false)
+                    .changeIndex(index);
+              },
             ),
           ),
         );

@@ -20,6 +20,9 @@ class MyApp extends StatelessWidget {
         '/': (context) => MultiProvider(
               providers: [
                 ChangeNotifierProvider(create: (_) => ProductProvider()),
+                ChangeNotifierProvider(create: (_) => SwitcherProvider()),
+                ChangeNotifierProvider(
+                    create: (_) => BottomNavigationBarProvider()),
               ],
               child: const MainScreen(),
             ),
