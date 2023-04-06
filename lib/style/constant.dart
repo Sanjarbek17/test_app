@@ -26,17 +26,3 @@ Color mossGreen = const Color.fromARGB(255, 215, 248, 208);
 Color deYork = const Color.fromARGB(255, 124, 188, 116);
 // button color
 Color dodgerBlue = const Color.fromARGB(255, 34, 85, 234);
-
-// switcher code
-// final List<FlutterToggleTab> toggleTabs = [
-//   FlutterToggleTab(
-//     text: 'Tab 1',
-//     borderRadius: 30,
-//     selectedBackgroundColors: [Colors.blue[700], Colors.blue[300]],
-//   ),
-//   FlutterToggleTab(
-//     text: 'Tab 2',
-//     borderRadius: 30,
-//     selectedBackgroundColors: [Colors.blue[700], Colors.blue[300]],
-//   ),
-// ];

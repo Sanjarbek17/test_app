@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
 import 'package:provider/provider.dart';
@@ -20,14 +19,11 @@ class Switcher extends StatelessWidget {
       selectedIndex: Provider.of<SwitcherProvider>(context).currentIndex,
       selectedBackgroundColors: const [Colors.white],
       unSelectedBackgroundColors: [greyBackground],
-      selectedTextStyle: const TextStyle(
-          color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400),
-      unSelectedTextStyle:
-          TextStyle(color: grey, fontSize: 14, fontWeight: FontWeight.w400),
+      selectedTextStyle: const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400),
+      unSelectedTextStyle: TextStyle(color: grey, fontSize: 14, fontWeight: FontWeight.w400),
       labels: const ['Списком', 'На карте'],
       selectedLabelIndex: (index) {
-        Provider.of<SwitcherProvider>(context, listen: false)
-            .changeIndex(index);
+        Provider.of<SwitcherProvider>(context, listen: false).changeIndex(index);
       },
     );
   }
@@ -46,14 +42,8 @@ class IconButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(50),
-        color: Colors.white,
-      ),
-      child: IconButton(
-        onPressed: onTap,
-        icon: Icon(icon, color: dodgerBlue),
-      ),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: Colors.white),
+      child: IconButton(onPressed: onTap, icon: Icon(icon, color: dodgerBlue)),
     );
   }
 }
