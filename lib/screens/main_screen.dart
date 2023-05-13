@@ -38,54 +38,61 @@ class _MainScreenState extends State<MainScreen> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 16.0, top: 16.0, right: 16.0),
-            child: Column(
-              children: [
-                // text, how many vised and date
-                Row(
+          child: Column(
+            children: [
+              // text, how many vised and date
+              Padding(
+                padding: const EdgeInsets.only(left: 16.0, top: 16.0, right: 16.0),
+                child: Column(
                   children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    Row(
                       children: [
-                        // visted client count
-                        Text(
-                          '${products.length} визитов',
-                          style: Theme.of(context).textTheme.titleLarge,
-                        ),
-                        const SizedBox(height: 4),
-                        // todays date
-                        Text(formattedDate, style: Theme.of(context).textTheme.titleSmall),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // visted client count
+                            Text(
+                              '${products.length} визитов',
+                              style: Theme.of(context).textTheme.titleLarge,
+                            ),
+                            const SizedBox(height: 4),
+                            // todays date
+                            Text(formattedDate, style: Theme.of(context).textTheme.titleSmall),
+                          ],
+                        )
                       ],
-                    )
+                    ),
+                    // navbar, switcher and icons
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 19.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButtons(icon: CustomIcons.calendar, onTap: () {}),
+                          // Switcher
+                          Switcher(
+                            selectedIndex: currentIndex,
+                            onTap: Provider.of<SwitcherProvider>(context).changeIndex,
+                          ),
+                          IconButtons(icon: CustomIcons.sort, onTap: () {})
+                        ],
+                      ),
+                    ),
                   ],
                 ),
-                // navbar, switcher and icons
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 19.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButtons(icon: CustomIcons.calendar, onTap: () {}),
-                      // Switcher
-                      Switcher(
-                        selectedIndex: currentIndex,
-                        onTap: Provider.of<SwitcherProvider>(context).changeIndex,
-                      ),
-                      IconButtons(icon: CustomIcons.sort, onTap: () {})
-                    ],
-                  ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 8,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      child: CustomCard(product: products[index % products.length]),
+                    );
+                  },
                 ),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: 8,
-                    itemBuilder: (context, index) {
-                      return CustomCard(product: products[index % products.length]);
-                    },
-                  ),
-                ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
         bottomNavigationBar: CustomButtomNavigation(
