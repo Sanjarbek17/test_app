@@ -11,6 +11,8 @@ import '../models/main_model.dart';
 import '../providers/main_screen_provider.dart';
 import '../style/constant.dart';
 import '../widgets/main_widgets.dart';
+import '../icons/custom_icons.dart';
+import 'widgets.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -65,87 +67,18 @@ class _MainScreenState extends State<MainScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButtons(icon: Icons.calendar_today, onTap: () {}),
+                          IconButtons(icon: CustomIcons.calendar, onTap: () {}),
                           // Switcher
                           const Switcher(),
-                          IconButtons(icon: Icons.segment, onTap: () {})
+                          IconButtons(icon: CustomIcons.sort, onTap: () {})
                         ],
                       ),
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: 8,
+                        itemCount: products.length,
                         itemBuilder: (context, index) {
-                          return Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(16),
-                              color: Colors.white,
-                            ),
-                            padding: const EdgeInsets.all(16),
-                            margin: const EdgeInsets.symmetric(vertical: 8),
-                            height: MediaQuery.of(context).size.height * 0.15,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                // product name and address
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          products[index % products.length].name,
-                                          style: Theme.of(context).textTheme.titleLarge,
-                                        ),
-                                        const SizedBox(height: 4),
-                                        Text(
-                                          products[index % products.length].address,
-                                          style: Theme.of(context).textTheme.bodySmall,
-                                        ),
-                                      ],
-                                    ),
-                                    // store type icons
-                                    Container(
-                                      width: 40,
-                                      height: 40,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(8),
-                                        color: products[index % products.length].storeType == 'buy' ? bilobaFlower : mossGreen,
-                                      ),
-                                      child: Center(
-                                        child: IconButton(
-                                          onPressed: () {},
-                                          icon: products[index % products.length].storeType == 'buy'
-                                              ? Icon(Icons.shopping_cart_outlined, color: lavender)
-                                              : Icon(
-                                                  Icons.card_travel,
-                                                  color: deYork,
-                                                ),
-                                          iconSize: 20.0,
-                                        ),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                // product time and distance
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Row(children: [
-                                      Text('🕔 ${products[index % products.length].time.toString()} мин', style: Theme.of(context).textTheme.titleMedium),
-                                      const SizedBox(width: 30),
-                                      Text(
-                                        '🌴 ${products[index % products.length].distance.toString()} км',
-                                        style: Theme.of(context).textTheme.titleMedium,
-                                      ),
-                                    ]),
-                                    Text(products[index % products.length].code, style: Theme.of(context).textTheme.bodySmall)
-                                  ],
-                                )
-                              ],
-                            ),
-                          );
+                          return CustomCard(product: products[index]);
                         },
                       ),
                     ),
