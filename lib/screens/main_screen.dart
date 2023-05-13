@@ -10,9 +10,8 @@ import 'package:test_app/style/main_style.dart';
 import '../models/main_model.dart';
 import '../providers/main_screen_provider.dart';
 import '../style/constant.dart';
-import '../widgets/main_widgets.dart';
 import '../icons/custom_icons.dart';
-import 'widgets.dart';
+import './widgets/main_widgets.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});

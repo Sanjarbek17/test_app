@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:test_app/icons/custom_icons.dart';
+import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
+import 'package:provider/provider.dart';
 
-import '../models/main_model.dart';
-import '../style/constant.dart';
+import '../../icons/custom_icons.dart';
+import '../../providers/main_screen_provider.dart';
+import '../../style/constant.dart';
+
+import '../../models/main_model.dart';
 
 class CustomCard extends StatelessWidget {
   const CustomCard({
@@ -88,6 +92,51 @@ class CustomCard extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+}
+
+class Switcher extends StatelessWidget {
+  const Switcher({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FlutterToggleTab(
+      marginSelected: const EdgeInsets.all(3),
+      width: MediaQuery.of(context).size.width * 0.13,
+      height: 40,
+      borderRadius: 10,
+      selectedIndex: Provider.of<SwitcherProvider>(context).currentIndex,
+      selectedBackgroundColors: const [Colors.white],
+      unSelectedBackgroundColors: [greyBackground],
+      selectedTextStyle: const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400),
+      unSelectedTextStyle: TextStyle(color: grey, fontSize: 14, fontWeight: FontWeight.w400),
+      labels: const ['Списком', 'На карте'],
+      selectedLabelIndex: (index) {
+        Provider.of<SwitcherProvider>(context, listen: false).changeIndex(index);
+      },
+    );
+  }
+}
+
+class IconButtons extends StatelessWidget {
+  /// IconButtons for main screen appbar
+  final IconData icon;
+  final void Function()? onTap;
+
+  const IconButtons({
+    super.key,
+    required this.icon,
+    required this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50), color: Colors.white),
+      child: IconButton(onPressed: onTap, icon: Icon(icon, color: dodgerBlue)),
     );
   }
 }
