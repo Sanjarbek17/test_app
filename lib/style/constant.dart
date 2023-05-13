@@ -1,28 +1,32 @@
 import 'package:flutter/material.dart';
 
 // text color
-Color black = const Color.fromARGB(255, 18, 18, 18);
+const Color black = Color.fromARGB(255, 18, 18, 18);
 // text grey color
-Color grey = const Color.fromARGB(255, 100, 100, 100);
+const Color grey = Color.fromARGB(255, 100, 100, 100);
 // background grey
-Color greyBackground = const Color.fromARGB(255, 227, 227, 230);
+const Color greyBackground = Color.fromARGB(255, 227, 227, 230);
+// background grey
+const Color greyBackgroundShadow = Color.fromARGB(255, 205, 205, 207);
 // product name color
-Color shark = const Color.fromARGB(255, 48, 50, 55);
+const Color shark = Color.fromARGB(255, 48, 50, 55);
 // background color
-Color concrete = const Color.fromARGB(255, 242, 242, 242);
+const Color concrete = Color.fromARGB(255, 242, 242, 242);
+// concrete to toogle button color
+const Color concrete2 = Color.fromARGB(255, 234, 233, 233);
 // product address text color
-Color silverSand = const Color.fromARGB(255, 190, 191, 191);
+const Color silverSand = Color.fromARGB(255, 190, 191, 191);
 // selected navigations color
-Color osloGray = const Color.fromARGB(255, 147, 149, 149);
-// product address text color 2
-Color cornflowerBlue = const Color.fromARGB(255, 116, 148, 244);
+const Color osloGray = Color.fromARGB(255, 147, 149, 149);
+// product address text const color 2
+const Color cornflowerBlue = Color.fromARGB(255, 116, 148, 244);
 // buy type icon background color
-Color bilobaFlower = const Color.fromARGB(255, 246, 220, 249);
+const Color bilobaFlower = Color.fromARGB(255, 246, 220, 249);
 // buy type icon border color
-Color lavender = const Color.fromARGB(255, 217, 117, 234);
+const Color lavender = Color.fromARGB(255, 217, 117, 234);
 // work type icon background color
-Color mossGreen = const Color.fromARGB(255, 215, 248, 208);
+const Color mossGreen = Color.fromARGB(255, 215, 248, 208);
 // work type icon border color
-Color deYork = const Color.fromARGB(255, 124, 188, 116);
+const Color deYork = Color.fromARGB(255, 124, 188, 116);
 // button color
-Color dodgerBlue = const Color.fromARGB(255, 34, 85, 234);
+const Color dodgerBlue = Color.fromARGB(255, 34, 85, 234);

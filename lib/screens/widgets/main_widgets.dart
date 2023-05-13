@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_toggle_tab/flutter_toggle_tab.dart';
-import 'package:provider/provider.dart';
 
 import '../../icons/custom_icons.dart';
-import '../../providers/main_screen_provider.dart';
 import '../../style/constant.dart';
-
 import '../../models/main_model.dart';
 
 class CustomButtomNavigation extends StatelessWidget {
@@ -127,8 +123,8 @@ class CustomCard extends StatelessWidget {
                 ),
                 child: Center(
                     child: product.storeType == 'buy'
-                        ? Icon(CustomIcons.buy, color: lavender)
-                        : Icon(
+                        ? const Icon(CustomIcons.buy, color: lavender)
+                        : const Icon(
                             CustomIcons.work,
                             color: deYork,
                           )),
@@ -169,26 +165,91 @@ class CustomCard extends StatelessWidget {
 class Switcher extends StatelessWidget {
   const Switcher({
     super.key,
+    required this.selectedIndex,
+    required this.onTap,
   });
+
+  final int selectedIndex;
+  final Function(int) onTap;
 
   @override
   Widget build(BuildContext context) {
-    return FlutterToggleTab(
-      isShadowEnable: false,
-      marginSelected: const EdgeInsets.all(3),
-      width: MediaQuery.of(context).size.width * 0.13,
-      height: 40,
-      borderRadius: 10,
-      selectedIndex: Provider.of<SwitcherProvider>(context).currentIndex,
-      selectedBackgroundColors: const [Colors.white],
-      unSelectedBackgroundColors: [greyBackground],
-      selectedTextStyle: const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400),
-      unSelectedTextStyle: TextStyle(color: grey, fontSize: 14, fontWeight: FontWeight.w400),
-      labels: const ['Списком', 'На карте'],
-      selectedLabelIndex: (index) {
-        Provider.of<SwitcherProvider>(context, listen: false).changeIndex(index);
-      },
-    );
+    return Container(
+        padding: const EdgeInsets.all(4),
+        decoration: BoxDecoration(
+          boxShadow: const [
+            // innter top shadow
+            BoxShadow(color: black, blurRadius: 60, blurStyle: BlurStyle.inner),
+            BoxShadow(offset: Offset(0, 0.6), color: concrete2, spreadRadius: 0.1, blurRadius: 1.5, blurStyle: BlurStyle.inner),
+          ],
+          borderRadius: BorderRadius.circular(13),
+          color: Colors.transparent,
+        ),
+        width: 192,
+        height: 40,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  onTap(0);
+                },
+                style: selectedIndex != 0
+                    ? ButtonStyle(
+                        //shadow to null
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor: MaterialStateProperty.all<Color>(concrete2),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                        padding: MaterialStateProperty.all(EdgeInsets.zero),
+                      )
+                    : ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                child: Text(
+                  'Списком',
+                  style: selectedIndex == 0 ? const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400) : const TextStyle(color: grey, fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+              ),
+            ),
+            Expanded(
+              child: ElevatedButton(
+                onPressed: () {
+                  onTap(1);
+                },
+                style: selectedIndex != 1
+                    ? ButtonStyle(
+                        //shadow to null
+                        elevation: MaterialStateProperty.all(0),
+                        backgroundColor: MaterialStateProperty.all<Color>(concrete2),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                        padding: MaterialStateProperty.all(EdgeInsets.zero),
+                      )
+                    : ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                          RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                        ),
+                      ),
+                child: Text(
+                  'На карте',
+                  style: selectedIndex == 1 ? const TextStyle(color: Colors.black, fontSize: 14, fontWeight: FontWeight.w400) : const TextStyle(color: grey, fontSize: 14, fontWeight: FontWeight.w400),
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
 
