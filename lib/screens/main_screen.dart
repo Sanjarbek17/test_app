@@ -9,7 +9,7 @@ import 'package:test_app/style/main_style.dart';
 
 import '../models/main_model.dart';
 import '../providers/main_screen_provider.dart';
-import '../style/constant.dart';
+// import '../style/constant.dart';
 import '../icons/custom_icons.dart';
 import './widgets/main_widgets.dart';
 
@@ -75,9 +75,9 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     Expanded(
                       child: ListView.builder(
-                        itemCount: products.length,
+                        itemCount: 8,
                         itemBuilder: (context, index) {
-                          return CustomCard(product: products[index]);
+                          return CustomCard(product: products[index % products.length]);
                         },
                       ),
                     ),
@@ -85,20 +85,8 @@ class _MainScreenState extends State<MainScreen> {
                 ),
               ),
             ),
-            bottomNavigationBar: BottomNavigationBar(
-              // elevation: 1.0,
-              unselectedItemColor: black,
-              selectedItemColor: dodgerBlue,
-              items: const <BottomNavigationBarItem>[
-                BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.timeline_outlined,
-                    ),
-                    label: 'Визиты'),
-                BottomNavigationBarItem(icon: Icon(Icons.settings_input_svideo), label: 'Команда'),
-                BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined), label: 'Профиль'),
-              ],
-              currentIndex: Provider.of<BottomNavigationBarProvider>(context).currentIndex,
+            bottomNavigationBar: CustomButtomNavigation(
+              selectedIndex: Provider.of<BottomNavigationBarProvider>(context).currentIndex,
               onTap: (index) {
                 Provider.of<BottomNavigationBarProvider>(context, listen: false).changeIndex(index);
               },

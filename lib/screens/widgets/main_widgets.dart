@@ -8,6 +8,76 @@ import '../../style/constant.dart';
 
 import '../../models/main_model.dart';
 
+class CustomButtomNavigation extends StatelessWidget {
+  const CustomButtomNavigation({super.key, required this.selectedIndex, required this.onTap});
+
+  final int selectedIndex;
+  final void Function(int) onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 70,
+      decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            // top shadow
+            BoxShadow(
+              color: Color.fromARGB(255, 205, 202, 202),
+              blurRadius: 10,
+              blurStyle: BlurStyle.outer,
+            )
+          ],
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(19),
+            topRight: Radius.circular(19),
+          )),
+      child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
+        InkWell(
+          onTap: () {
+            onTap(0);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(NavIcons.route, color: selectedIndex == 0 ? dodgerBlue : black),
+              Text('Визиты', style: TextStyle(color: selectedIndex == 0 ? dodgerBlue : black)),
+            ],
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            onTap(1);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(
+                NavIcons.comanda,
+                color: selectedIndex == 1 ? dodgerBlue : black,
+                size: 25,
+              ),
+              Text('Команда', style: TextStyle(color: selectedIndex == 1 ? dodgerBlue : black)),
+            ],
+          ),
+        ),
+        InkWell(
+          onTap: () {
+            onTap(2);
+          },
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.account_circle_outlined, color: selectedIndex == 2 ? dodgerBlue : black),
+              Text('Профиль', style: TextStyle(color: selectedIndex == 2 ? dodgerBlue : black)),
+            ],
+          ),
+        ),
+      ]),
+    );
+  }
+}
+
 class CustomCard extends StatelessWidget {
   const CustomCard({
     super.key,
@@ -104,6 +174,7 @@ class Switcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlutterToggleTab(
+      isShadowEnable: false,
       marginSelected: const EdgeInsets.all(3),
       width: MediaQuery.of(context).size.width * 0.13,
       height: 40,

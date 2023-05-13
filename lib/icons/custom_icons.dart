@@ -13,4 +13,18 @@ class CustomIcons {
   static const IconData time = IconData(0xe804, fontFamily: 'time', fontPackage: null);
 
   static const IconData route = IconData(0xe805, fontFamily: 'route', fontPackage: null);
+
+  static const IconData comanda = IconData(0xe806, fontFamily: 'comanda', fontPackage: null);
+
+  // static const IconData user = IconData(0xe807, fontFamily: 'user', fontPackage: null);
+}
+
+class NavIcons {
+  NavIcons._();
+
+  static const IconData route = IconData(0xe805, fontFamily: 'route', fontPackage: null);
+
+  static const IconData comanda = IconData(0xe806, fontFamily: 'comanda', fontPackage: null);
+
+  // static const IconData user = IconData(0xe807, fontFamily: 'user', fontPackage: null);
 }

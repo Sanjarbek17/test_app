@@ -19,7 +19,7 @@ Color cornflowerBlue = const Color.fromARGB(255, 116, 148, 244);
 // buy type icon background color
 Color bilobaFlower = const Color.fromARGB(255, 246, 220, 249);
 // buy type icon border color
-Color lavender = const Color.fromARGB(255, 200, 108, 214);
+Color lavender = const Color.fromARGB(255, 217, 117, 234);
 // work type icon background color
 Color mossGreen = const Color.fromARGB(255, 215, 248, 208);
 // work type icon border color

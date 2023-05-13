@@ -84,6 +84,9 @@ flutter:
   - family:  route
     fonts:
       - asset: assets/icons/route.ttf
+  - family: comanda
+    fonts:
+      - asset: assets/icons/comanda.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
